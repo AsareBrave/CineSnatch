@@ -1,6 +1,7 @@
 import React from 'react'
-
-const MovieCard = ({ movie: { title, vote_average, poster_path, release_date, original_language } }) => {
+import ReadMore from './ReadMore'
+const MovieCard = ({ movie: { title, vote_average, poster_path, release_date, original_language, overview
+} }) => {
     return (
         <div className='movie-card'>
             <img src={poster_path ? `https://tmdb.org/t/p/w500/${poster_path}` : '/no-movie.png'} alt="{title}" />
@@ -16,6 +17,9 @@ const MovieCard = ({ movie: { title, vote_average, poster_path, release_date, or
                     </p>
                     <span>•</span>
                     <p className='year'>{release_date ? release_date.split('-')[0] : 'N/A'}</p>
+                    <ReadMore text={overview} maxLength="30"/>
+
+
                 </div>
             </div>
         </div>

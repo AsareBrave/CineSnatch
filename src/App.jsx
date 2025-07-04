@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import Search from './components/search'
+import Search from './components/Search'
 import Spinner from './components/Spinner'
 import MovieCard from './components/MovieCard'
 import { useDebounce } from 'react-use'
@@ -38,6 +38,7 @@ const App = () => {
                 return;
             }
             setMovieList(data.results)
+            console.log(data.results)
         }
         catch (error) {
             console.log(`Error fetching movies: ${error}`);
@@ -68,6 +69,7 @@ const App = () => {
                     ) : errorMessage ? (<p className='text-red-500'>{errorMessage}</p>) : (
                         <ul>{movieList.map((movie) => (
                             <MovieCard key={movie.id} movie={movie} />
+        
                         ))}</ul>
                     )}
                 </section>
